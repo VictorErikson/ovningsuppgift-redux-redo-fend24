@@ -1,14 +1,16 @@
+import { useSelector } from "react-redux";
 import Todo from "./Todo";
+import { store } from "./redux/store";
 
-export default function TodoList({ todos, toggleTodo, removeTodo }) {
+export default function TodoList() {
+  const todos = useSelector((store) => store. todos.todos)
+  
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
         <Todo
           key={todo.id}
           todo={todo}
-          toggleTodo={toggleTodo}
-          removeTodo={removeTodo}
         />
       ))}
     </ul>

@@ -1,0 +1,23 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+
+const todosSlice = createSlice({
+    name: "todosSlice",
+    initialState: {
+        todos: [{id:2, text: "test", done: true}]
+    },
+    reducers:{
+        addTodo: (state, action) => {  
+            state = [...state, { id: Date.now(), text: action.payload, done: false }];
+        },
+        toggleTodo: (state, action) => {
+            state.map((todo) => todo.id === action.payload ? { ...todo, done: !todo.done } : todo
+        )},
+        removeTodo: (state, action) => {
+            state.filter((todo) => todo.id !== action.payload)
+        }
+    }
+})
+
+export const {addTodo, toggleTodo, removeTodo} = todosSlice.actions;
+export default todosSlice.reducer

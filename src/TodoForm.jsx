@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "./redux/todosSlice";
 
-export default function TodoForm({ addTodo }) {
+export default function TodoForm() {
   const [input, setInput] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim() === "") return;
-    addTodo(input);
+    // addTodo(input);
+    dispatch(addTodo(input))
     setInput("");
   };
 
