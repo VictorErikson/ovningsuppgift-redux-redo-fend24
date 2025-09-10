@@ -8,13 +8,13 @@ const todosSlice = createSlice({
     },
     reducers:{
         addTodo: (state, action) => {  
-            state = [...state, { id: Date.now(), text: action.payload, done: false }];
+            state.todos = [...state.todos, { id: Date.now(), text: action.payload, done: false }];
         },
         toggleTodo: (state, action) => {
-            state.map((todo) => todo.id === action.payload ? { ...todo, done: !todo.done } : todo
+            state.todos = state.todos.map((todo) => todo.id === action.payload ? { ...todo, done: !todo.done } : todo
         )},
         removeTodo: (state, action) => {
-            state.filter((todo) => todo.id !== action.payload)
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload)
         }
     }
 })

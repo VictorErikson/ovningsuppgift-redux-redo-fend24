@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
-import { store } from "./redux/store";
 
 export default function TodoList() {
   const todos = useSelector((store) => store. todos.todos)
